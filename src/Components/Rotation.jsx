@@ -77,7 +77,7 @@ const Rotation = () => {
         <div className="md:col-span-6 h-auto md:h-[80vh] flex flex-col justify-center items-start text-white space-y-6 px-4 py-4 md:py-0 md:px-0 order-2 md:order-1">
           <h2 className="text-3xl md:text-4xl font-bold">Pre-seed Bootstrapped</h2>
           <p className="text-base md:text-lg leading-relaxed">
-            This is POC stage. You have a hypothetical product idea, you want it done & tested properly to know whether it’s worth the time and resources.
+            This is POC stage. You have a hypothetical product idea, you want's it done & tested properly to know whether it’s worth the time and resources.
           </p>
           <p className="text-base md:text-lg font-semibold">
             More than <span className="text-green-400">40%</span> of our clients on this stage get initial investment for MVPs.
