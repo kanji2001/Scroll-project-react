@@ -86,7 +86,7 @@ const Rotation = () => {
         <div className="md:col-span-6 h-auto lg:h-[70vh] md:h-[60vh] bg-[#171717] shadow-2xl relative flex items-center justify-center md:justify-end py-6 md:py-0 px-4 md:px-0 order-1 md:order-2">
           <motion.div
             ref={div1Ref}
-            className="w-full md:w-[94%] lg:w-[92%] h-[250px] md:h-[70%] lg:h-[75%] bg-gradient-to-r from-gray-900 via-gray-800 to-black rounded-2xl shadow-lg flex items-center justify-center text-white text-lg lg:text-3xl md:text-xl font-semibold md:absolute md:-right-6 lg:-right-10 "
+            className="w-full md:w-[94%] lg:w-[92%] h-[250px] md:h-[70%] lg:h-[75%] bg-gradient-to-r from-gray-900 via-gray-800 to-black rounded-2xl shadow-lg flex items-center justify-center text-white text-lg lg:text-3xl md:text-xl font-semibold md:absolute md:-right-6 lg:-right-12 "
             style={{ rotate: rotateDiv1, opacity: opacityDiv1 }}
           >
             The Cross-Chain Stablecoin
@@ -106,7 +106,7 @@ const Rotation = () => {
         <div className="md:col-span-6 h-auto lg:h-[70vh] md:h-[60vh] bg-[#171717] shadow-2xl relative flex items-center justify-center md:justify-end py-6 md:py-0 px-4 md:px-0 order-2 md:order-4">
           <motion.div
             ref={div2Ref}
-            className="w-full md:w-[94%] lg:w-[92%] h-[250px] md:h-[70%] lg:h-[75%] bg-gradient-to-r from-gray-900 via-gray-800 to-black rounded-2xl shadow-lg flex items-center justify-center text-white text-lg lg:text-3xl md:text-xl font-semibold md:absolute md:-right-6 lg:-right-10 "
+            className="w-full md:w-[94%] lg:w-[92%] h-[250px] md:h-[70%] lg:h-[75%] bg-gradient-to-r from-gray-900 via-gray-800 to-black rounded-2xl shadow-lg flex items-center justify-center text-white text-lg lg:text-3xl md:text-xl font-semibold md:absolute md:-right-6 lg:-right-12 "
             style={{ rotate: rotateDiv2, opacity: opacityDiv2 }}
           >
             The Cross-Chain Stablecoin
@@ -126,7 +126,7 @@ const Rotation = () => {
         <div className="md:col-span-6 h-auto lg:h-[70vh] md:h-[60vh] bg-[#171717] shadow-2xl relative flex items-center justify-center md:justify-end py-6 md:py-0 px-4 md:px-0 order-4 md:order-6">
           <motion.div
             ref={div3Ref}
-            className="w-full md:w-[94%] lg:w-[92%] h-[250px] md:h-[70%] lg:h-[75%] bg-gradient-to-r from-gray-900 via-gray-800 to-black rounded-2xl shadow-lg flex items-center justify-center text-white lg:text-3xl md:text-xl font-semibold md:absolute md:-right-6 lg:-right-10 "
+            className="w-full md:w-[94%] lg:w-[92%] h-[250px] md:h-[70%] lg:h-[75%] bg-gradient-to-r from-gray-900 via-gray-800 to-black rounded-2xl shadow-lg flex items-center justify-center text-white lg:text-3xl md:text-xl font-semibold md:absolute md:-right-6 lg:-right-12 "
             style={{ rotate: rotateDiv3, opacity: opacityDiv3 }}
           >
             The Cross-Chain Stablecoin
