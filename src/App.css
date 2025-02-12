@@ -9,3 +9,14 @@
   body {
     -ms-overflow-style: none;
   } 
+
+  .fade-container {
+    will-change: opacity;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .fade-child {
+    will-change: opacity;
+    transition: opacity 0.5s ease-in-out;
+  }
+  

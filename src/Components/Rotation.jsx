@@ -7,6 +7,38 @@ const Rotation = () => {
   const div2Ref = useRef(null);
   const div3Ref = useRef(null);
 
+  const firstDivRef = useRef(null);
+  const secondDivRef = useRef(null);
+  const thirdDivRef = useRef(null);
+
+  const { scrollYProgress: firstDivProgress } = useScroll({
+    target: firstDivRef,
+    offset: ["start 88%", "end 22%"],
+    layoutEffect: false,
+  });
+  const { scrollYProgress: secondDivProgress } = useScroll({
+    target: secondDivRef,
+    offset: ["start 88%", "end 12%"],
+    layoutEffect: false,
+  });
+  const { scrollYProgress: thirdDivProgress } = useScroll({
+    target: thirdDivRef,
+    offset: ["start 88%", "end 12%"],
+    layoutEffect: false,
+  });
+  
+  const firstH2Opacity = useTransform(firstDivProgress, [0, 0.05, 0.1, 0.15, 0.2, 0.7, 0.7, 0.8, 1], [0, 0.01, 0.2, 0.3,  1, 1, 0.7, 0.1, 0]);
+  const firstPOpacity = useTransform(firstDivProgress, [0, 0.05, 0.1, 0.15, 0.25, 0.7, 0.8, 0.9, 1], [0, 0, 0, 0.1, 1, 1, 0.6, 0.1, 0]);
+  const firstP2Opacity = useTransform(firstDivProgress, [0, 0.1, 0.2, 0.3, 0.4, 0.7, 0.9, 0.93, 0.96 , 1], [0, 0, 0, 0.1, 1, 0.9, 0.9, 0.4, 0.2, 0.05]);
+
+  const secondH2Opacity = useTransform(secondDivProgress, [0, 0.05, 0.1, 0.15, 0.2, 0.7, 0.7, 0.8, 1], [0, 0.01, 0.2, 0.3,  1, 1, 0.7, 0.1, 0]);
+  const secondPOpacity = useTransform(secondDivProgress, [0, 0.05, 0.1, 0.15, 0.25, 0.7, 0.8, 0.9, 1], [0, 0, 0, 0.1, 1, 1, 0.2, 0, 0]);
+  const secondP2Opacity = useTransform(secondDivProgress, [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.8, 0.9, 0.93 , 1], [0, 0, 0, 0.1, 1, 1, 0.9, 0.2, 0.1, 0.05]);
+
+  const thirdH2Opacity = useTransform(thirdDivProgress, [0, 0.05, 0.1, 0.15, 0.2, 0.6, 0.7, 0.8, 0.9], [0, 0.01, 0.2, 0.3,  1, 1, 0.7, 0.1, 0]);
+  const thirdPOpacity = useTransform(thirdDivProgress, [0, 0.05, 0.1, 0.15, 0.25, 0.7, 0.85, 0.9, 1], [0, 0, 0, 0.1, 1, 1, 0.1, 0.1, 0]);
+  const thirdP2Opacity = useTransform(thirdDivProgress, [0, 0.1, 0.2, 0.3, 0.4, 0.7, 0.8, 0.93, 0.96 , 1], [0, 0, 0, 0.1, 1, 0.9, 0.9, 0, 0.2, 0.05]);
+
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 765);
 
   useEffect(() => {
@@ -70,19 +102,21 @@ const Rotation = () => {
   return (
     <motion.div
       ref={containerRef}
-      className="w-screen h-[300vh] lg:h-[250vh] md:h-[220vh] flex flex-col items-center justify-center bg-black overflow-hidden no-scrollbar px-0"
+      className="w-screen h-[300vh] lg:h-[400vh] md:h-[360vh] flex flex-col items-center justify-center bg-black overflow-hidden no-scrollbar px-0"
     >
       <motion.div className="grid grid-cols-1 md:grid-cols-12 w-full px-0">
         {/* First div */}
-        <div className="md:col-span-6 h-auto md:h-[60vh] lg:h-[70vh] flex flex-col justify-center items-start text-white space-y-6 px-4 py-4 md:py-0 md:px-0 order-2 md:order-1">
-          <h2 className="text-3xl md:text-2xl lg:text-3xl font-bold">Pre-seed Bootstrapped</h2>
-          <p className="text-base md:text-md lg:text-xl leading-relaxed">
-            This is POC stage. You have a hypothetical product idea, you want's it done & tested properly to know whether it’s worth the time and resources.
-          </p>
-          <p className="text-base md:text-sm lg:text-xl font-semibold">
+        <motion.div ref={firstDivRef} className="md:col-span-6 h-auto md:h-[60vh] lg:h-[70vh] flex flex-col justify-center items-start text-white space-y-6 px-4 py-4 md:py-0 md:px-10 order-2 md:order-1">
+        <motion.h2 className="text-3xl md:text-xl lg:text-3xl font-bold" style={{ opacity: firstH2Opacity }}>
+            Pre-seed Bootstrapped
+          </motion.h2>
+          <motion.p className="text-base md:text-sm lg:text-xl leading-relaxed" style={{ opacity: firstPOpacity }}>
+            This is POC stage. You have a hypothetical product idea, you want it done & tested properly to know whether it’s worth the time and resources.
+          </motion.p>
+          <motion.p className="text-base md:text-sm lg:text-xl font-semibold" style={{opacity : firstP2Opacity}} >
             More than <span className="text-green-400">40%</span> of our clients on this stage get initial investment for MVPs.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
         <div className="md:col-span-6 h-auto lg:h-[70vh] md:h-[60vh] bg-[#171717] shadow-2xl relative flex items-center justify-center md:justify-end py-6 md:py-0 px-4 md:px-0 order-1 md:order-2">
           <motion.div
             ref={div1Ref}
@@ -94,15 +128,17 @@ const Rotation = () => {
         </div>
 
         {/* Second div */}
-        <div className="md:col-span-6 h-auto lg:h-[70vh] md:h-[60vh] flex flex-col justify-center items-start text-white space-y-6 px-4 py-4 md:py-0 md:px-0 order-3 md:order-4">
-          <h2 className="text-3xl md:text-2xl lg:text-3xl font-bold">Pre-seed Bootstrapped</h2>
-          <p className="text-base md:text-md lg:text-xl leading-relaxed">
-            This is POC stage. You have a hypothetical product idea, you want it done & tested properly to know whether it’s worth the time and resources.
-          </p>
-          <p className="text-base md:text-sm lg:text-xl font-semibold">
+        <motion.div ref={secondDivRef} className="md:col-span-6 h-auto lg:h-[70vh] md:h-[60vh] flex flex-col justify-center items-start text-white space-y-6 px-4 py-4 md:py-0 md:px-10 order-3 md:order-4">
+        <motion.h2 className="text-3xl md:text-2xl lg:text-3xl font-bold" style={{ opacity: secondH2Opacity }}>
+            Seed Stage
+          </motion.h2>
+          <motion.p className="text-base md:text-md lg:text-xl leading-relaxed" style={{ opacity: secondPOpacity }}>
+            Your idea is validated, and you're looking for funding to build an MVP that attracts investors and early adopters.
+          </motion.p>
+          <motion.p className="text-base md:text-sm lg:text-xl font-semibold" style ={{opacity: secondP2Opacity}}>
             More than <span className="text-green-400">40%</span> of our clients on this stage get initial investment for MVPs.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
         <div className="md:col-span-6 h-auto lg:h-[70vh] md:h-[60vh] bg-[#171717] shadow-2xl relative flex items-center justify-center md:justify-end py-6 md:py-0 px-4 md:px-0 order-2 md:order-4">
           <motion.div
             ref={div2Ref}
@@ -114,15 +150,17 @@ const Rotation = () => {
         </div>
 
         {/* Third div */}
-        <div className="md:col-span-6 h-auto lg:h-[70vh] md:h-[60vh] flex flex-col justify-center items-start text-white space-y-6 px-4 py-4 md:py-0 md:px-0 order-5 md:order-6">
-          <h2 className="text-3xl md:text-2xl lg:text-3xl font-bold">Pre-seed Bootstrapped</h2>
-          <p className="text-base md:text-md lg:text-xl leading-relaxed">
-            This is POC stage. You have a hypothetical product idea, you want it done & tested properly to know whether it’s worth the time and resources.
-          </p>
-          <p className="text-base md:text-sm lg:text-xl font-semibold">
+        <motion.div ref={thirdDivRef}  className="md:col-span-6 h-auto lg:h-[70vh] md:h-[60vh] flex flex-col justify-center items-start text-white space-y-6 px-4 py-4 md:py-0 md:px-10 order-5 md:order-6">
+        <motion.h2 className="text-3xl md:text-2xl lg:text-3xl font-bold" style={{ opacity: thirdH2Opacity }}>
+            Series A
+          </motion.h2>
+          <motion.p className="text-base md:text-md lg:text-xl leading-relaxed" style={{ opacity: thirdPOpacity }}>
+            Your MVP has traction, and you’re raising funds to scale operations and expand market reach.
+          </motion.p>
+          <motion.p className="text-base md:text-sm lg:text-xl font-semibold" style={{opacity : thirdP2Opacity}}>
             More than <span className="text-green-400">40%</span> of our clients on this stage get initial investment for MVPs.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
         <div className="md:col-span-6 h-auto lg:h-[70vh] md:h-[60vh] bg-[#171717] shadow-2xl relative flex items-center justify-center md:justify-end py-6 md:py-0 px-4 md:px-0 order-4 md:order-6">
           <motion.div
             ref={div3Ref}
