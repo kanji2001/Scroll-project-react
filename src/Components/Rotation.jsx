@@ -150,7 +150,7 @@ const Rotation = () => {
         </div>
 
         {/* Third div */}
-        <motion.div ref={thirdDivRef}  className="md:col-span-6 h-auto lg:h-[70vh] md:h-[60vh] flex flex-col justify-center items-start text-white space-y-6 px-4 py-4 md:py-0 md:px-10 order-5 md:order-6">
+        <motion.div ref={thirdDivRef}  className="md:col-span-6 h-auto lg:h-[70vh] md:h-[60vh] flex flex-col justify-center items-start text-white space-y-6 px-4 py-4  md:py-0 md:px-10 order-5 md:order-6">
         <motion.h2 className="text-3xl md:text-2xl lg:text-3xl font-bold" style={{ opacity: thirdH2Opacity }}>
             Series A
           </motion.h2>
