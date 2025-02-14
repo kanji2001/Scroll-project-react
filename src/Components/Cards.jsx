@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { easeIn, easeInOut, motion, useSpring, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 export default function Cards() {
@@ -7,6 +7,7 @@ export default function Cards() {
   const { scrollYProgress: texts } = useScroll({ target: ref, offset: ["start 65%", "end 220%"] });
 
   const [isMobile, setIsMobile] = useState(false);
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -18,24 +19,66 @@ export default function Cards() {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  
+  // ! custom control
 
-  const slowScrollProgress = useTransform(cards, (value) => value * 0.9);
+  // const slowScrollProgress = useTransform(cards, (value) => value * 0.85);
 
-  const card1X = useTransform(slowScrollProgress, [0, 0.04, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18, 0.22, 0.24, 0.26, 0.3], [-380 ,-300, -250, -225, -200, -175, -150, -125, -100, -50, -30, 0]);
-  const card1Rotate = useTransform(slowScrollProgress, [0.2, 0.3], [-10, 0]);
-  const card1Opacity = useTransform(slowScrollProgress, [0, 0.1, 0.2, 0.3, 0.4, 0.5, 1], [0, 0.3, 0.7, 0.75, 1, 1, 1]);
+  // const card1X = useTransform(slowScrollProgress, [0, 0.04, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18, 0.22, 0.24, 0.26, 0.3], [-380 ,-300, -250, -225, -200, -175, -150, -125, -100, -50, -30, 0], {ease : easeInOut});
+  // const card1Rotate = useTransform(slowScrollProgress, [0.2, 0.3], [-10, 0], {ease : easeInOut});
+  // const card1Opacity = useTransform(slowScrollProgress, [0, 0.1, 0.2, 0.3, 0.4, 0.5, 1], [0, 0.3, 0.7, 0.75, 1, 1, 1], {ease : easeInOut});
 
-  const card2X = useTransform(slowScrollProgress, [0.3, 0.32, 0.34, 0.36, 0.38, 0.40, 0.42, 0.44, 0.46, 0.48, 0.5 , 0.52, 0.54], [300, 275, 250, 225, 200 ,175, 150, 125, 100, 75 , 50 , 25, 0]);
-  const card2Rotate = useTransform(slowScrollProgress, [0.3, 0.5], [15, 0]);
-  const card2Opacity = useTransform(slowScrollProgress, [0, 0.2, 0.3, 0.5, 0.6], [0, 0.3, 0.5, 0.8, 1]);
+  // const card2X = useTransform(slowScrollProgress, [0.3, 0.32, 0.34, 0.36, 0.38, 0.40, 0.42, 0.44, 0.46, 0.48, 0.5 , 0.52, 0.54], [300, 275, 250, 225, 200 ,175, 150, 125, 100, 75 , 50 , 25, 0], {ease : easeInOut}, {ease : easeInOut});
+  // const card2Rotate = useTransform(slowScrollProgress, [0.3, 0.5], [15, 0], {ease : easeInOut});
+  // const card2Opacity = useTransform(slowScrollProgress, [0, 0.2, 0.3, 0.5, 0.6], [0, 0.3, 0.5, 0.8, 1], {ease : easeInOut});
 
-  const card3X = useTransform(slowScrollProgress, [0.5, 0.6], [-150, 0]);
-  const card3Rotate = useTransform(slowScrollProgress, [0.4, 0.8], [-10, 0]);
-  const card3Opacity = useTransform(slowScrollProgress, [0, 0.5, 0.6, 0.7,  1], [0, 0.3, 0.6, 0.9, 1]);
+  // const card3X = useTransform(slowScrollProgress, [0.5, 0.6], [-150, 0], {ease : easeInOut}, {ease : easeInOut});
+  // const card3Rotate = useTransform(slowScrollProgress, [0.4, 0.8], [-10, 0], {ease : easeInOut});
+  // const card3Opacity = useTransform(slowScrollProgress, [0, 0.5, 0.6, 0.7,  1], [0, 0.3, 0.6, 0.9, 1], {ease : easeInOut});
 
-  const card4X = useTransform(cards, [0.6, 0.63, 0.66, 0.7, 0.73, 0.76, 0.8, 0.83, 0.86, 0.9], [300, 275, 250, 200, 175, 125, 100, 75, 50, 0]);
-  const card4Rotate = useTransform(cards, [0.6, 0.9], [11, 0]);
-  const card4Opacity = useTransform(cards, [0, 0.5, 0.7, 0.8, 0.9, 1], [0, 0, 0.3, 0.6, 0.9, 1]);
+  // const card4X = useTransform(cards, [0.6, 0.63, 0.66, 0.7, 0.73, 0.76, 0.8, 0.83, 0.86, 0.9], [300, 275, 250, 200, 175, 125, 100, 75, 50, 0], {ease : easeInOut}, {ease : easeInOut});
+  // const card4Rotate = useTransform(cards, [0.6, 0.9], [11, 0], {ease : easeInOut});
+  // const card4Opacity = useTransform(cards, [0, 0.5, 0.7, 0.8, 0.9, 1], [0, 0, 0.3, 0.6, 0.9, 1], {ease : easeInOut}); 
+
+  // ! using slower scrollY
+
+  // const slowScrollProgress = useTransform(cards, (value) => value * 0.42);
+
+  // const card1X = useTransform(slowScrollProgress, [0, 0.1], [-380, 0], { ease: easeInOut });
+  // const card1Rotate = useTransform(slowScrollProgress, [0, 0.2], [-10, 0], { ease: easeInOut });
+  // const card1Opacity = useTransform(slowScrollProgress, [0, 0.2], [0, 1], { ease: easeInOut });
+  
+  // const card2X = useTransform(slowScrollProgress, [0.1, 0.2], [300, 0], { ease: easeInOut });
+  // const card2Rotate = useTransform(slowScrollProgress, [0.1, 0.2], [10, 0], { ease: easeInOut });
+  // const card2Opacity = useTransform(slowScrollProgress, [0.1, 0.2], [0, 1], { ease: easeInOut });
+
+  // const card3X = useTransform(slowScrollProgress, [0.2, 0.3], [-300, 0], { ease: easeInOut });
+  // const card3Rotate = useTransform(slowScrollProgress, [0.2, 0.3], [-10, 0], { ease: easeInOut });
+  // const card3Opacity = useTransform(slowScrollProgress, [0.2, 0.3], [0, 1], { ease: easeInOut });
+
+  // const card4X = useTransform(slowScrollProgress, [0.3, 0.4], [200, 0], { ease: easeInOut });
+  // const card4Rotate = useTransform(slowScrollProgress, [0.3, 0.4], [10, 0], { ease: easeInOut });
+  // const card4Opacity = useTransform(slowScrollProgress, [0.3, 0.4], [0, 1], { ease: easeInOut });
+
+  // ! using Spring
+
+  const slowScrollProgress =useSpring( useTransform(cards, (value) => value * 0.75), {stiffness : 80, damping : 20 , threshold : 0.6}) ;
+
+  const card1X = useSpring(useTransform(slowScrollProgress, [0, 0.1], [-380, 0], { ease: easeInOut }), { stiffness: 50, damping:18 , threshold : 0.5});
+  const card1Rotate = useSpring(useTransform(slowScrollProgress, [0, 0.2], [-10, 0], { ease: easeInOut }), { stiffness: 40, damping: 18, });
+  const card1Opacity = useSpring(useTransform(slowScrollProgress, [0, 0.2], [0, 1], { ease: easeInOut }), { stiffness: 40, damping: 18, });
+  
+  const card2X = useSpring(useTransform(slowScrollProgress, [0.2, 0.3], [300, 0], { ease: easeInOut }), { stiffness: 40, damping: 18 , threshold : 0.1});
+  const card2Rotate = useSpring(useTransform(slowScrollProgress, [0.2, 0.3], [10, 0], { ease: easeInOut }), { stiffness: 40, damping: 18, threshold : 0.1 });
+  const card2Opacity = useSpring(useTransform(slowScrollProgress, [0.2, 0.3], [0, 1], { ease: easeInOut }), { stiffness: 40, damping: 18, threshold : 0.1 });
+
+  const card3X = useSpring(useTransform(slowScrollProgress, [0.4, 0.5], [-300, 0], { ease: easeInOut }), { stiffness: 40, damping: 18, threshold : 0.1 });
+  const card3Rotate = useSpring(useTransform(slowScrollProgress, [0.4, 0.5], [-10, 0], { ease: easeInOut }), { stiffness: 40, damping: 18, threshold : 0.1 });
+  const card3Opacity = useSpring(useTransform(slowScrollProgress, [0.4, 0.5], [0, 1], { ease: easeInOut }), { stiffness: 40, damping: 18, threshold : 0.1 });
+
+  const card4X = useSpring(useTransform(slowScrollProgress, [0.6, 0.7], [210, 0], { ease: easeInOut }), { stiffness: 50 , damping: 20 , threshold : 0.1});
+  const card4Rotate = useSpring(useTransform(slowScrollProgress, [0.6, 0.7], [10, 0], { ease: easeInOut }), { stiffness: 40, damping: 18, threshold : 0.1 });
+  const card4Opacity = useSpring(useTransform(slowScrollProgress, [0.6, 0.7], [0, 1], { ease: easeInOut }), { stiffness: 40, damping: 18, threshold : 0.1 });
 
   if (typeof window !== "undefined") {
     document.body.style.overflow = "scroll"; 
@@ -52,10 +95,10 @@ export default function Cards() {
           return (
             <motion.span 
               key={i}
-              className="inline-block mr-1"
+              className="inline-block mr-2"
               style={{
                 opacity: !isMobile ? useTransform(texts, [i / letters.length, (i + 1) / letters.length], [0, 1]) : useTransform(texts, [0, 0.05, 0.1, 0.15, 0.2, 0.25, 1], [0.1, 0.2, 0.4, 0.6, 0.8, 1 ,1]),
-                transition: "opacity 0.3s ease"
+                transition: "opacity 1s ease"
               }}
             >
               {letter}
