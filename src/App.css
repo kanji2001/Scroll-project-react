@@ -10,6 +10,10 @@
     -ms-overflow-style: none;
   } 
 
+  .scrollbar-track {
+    display: none !important;
+  }
+
   .fade-container {
     will-change: opacity;
     transition: opacity 0.5s ease-in-out;
